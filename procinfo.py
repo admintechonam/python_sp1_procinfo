@@ -10,10 +10,10 @@ app=typer.Typer()
 top_n_processes = {}
 proc_info = {}
 
-def get_top_process(count):
-    print(f"Listing the top {count} running processes:")
+def get_top_process(top_count):
+    print(f"Listing the top {top_count} running processes:")
     for i, proc in enumerate(psutil.process_iter(['name', 'pid']), start=1):
-        if i > count:
+        if i > top_count:
             break
         top_n_processes.update({i: {'name': proc.info['name'], 'pid': proc.info['pid']}})
         
@@ -60,9 +60,12 @@ def diplay_menu(top_count):
     
 
 @app.command()             
-def main(platform: str = typer.Option(..., help="Platform name (must be 'windows')"), top_count: int = 5):
-     # Input validation : platform is mandatory arg
-     # top_count is deafult arg 
+def main(platform: str = typer.Option(None, help="Platform name (must be 'windows')"), top_count: int = 5):
+
+    if not platform:
+        print("Error: --platform is a mandatory argument. Please provide it (e.g., --platform windows).")
+        raise SystemExit("Exiting...")
+  
     if platform.lower() != 'windows':
         print("This script is only for Windows platform")
         raise SystemExit("Exiting...")
