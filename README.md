@@ -8,7 +8,7 @@ A Python CLI tool to display process information (memory, CPU, disk usage) for W
 - User-friendly CLI with prompts
 
 ## Requirements
-- Python 3.7+
+- Python 3.11+
 - Windows OS
 - [psutil](https://pypi.org/project/psutil/)
 - [typer](https://pypi.org/project/typer/)

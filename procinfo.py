@@ -1,5 +1,5 @@
 import typer
-from procinfo_utils import get_top_process, get_proc_details, display_proc_info, display_procs, diplay_menu
+from common_utils.procinfo_utils import get_top_process, get_proc_details, display_proc_info, display_procs, diplay_menu
 
 app = typer.Typer()
 
